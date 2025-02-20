@@ -10,7 +10,7 @@ const defaultSettings = () => ({
   contracts: {},
   networks: {},
 
-  ipfsInfuraDedicatedGateway: "http://14.225.254.58:5001",
+  ipfsInfuraDedicatedGateway: "https://ipfs.bonheo.store",
   ipfsInfuraProjectId: '',
   ipfsInfuraProjectSecret: '',
 

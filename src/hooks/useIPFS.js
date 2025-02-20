@@ -21,9 +21,8 @@ export const useIPFS = () => {
     try {
 
       return create({
-        host: "14.225.254.58:5001",
-        port: 5001,
-        protocol: "http",
+        host: "ipfs.bonheo.store",
+        protocol: "https",
 
       });
     } catch (error) {

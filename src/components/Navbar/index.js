@@ -52,7 +52,7 @@ const Navigation = () => {
 
   const { chainId } = useWeb3React();
 
-  const mockCompanyLogo = 'https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png';
+  const mockCompanyLogo = 'https://launchpad.bonheo.store/h3-removebg-preview.png';
 
   const hasFeeToken = !isFeeTokenDataFetching && FeeTokenSymbol && FeeTokenAddress;
 
