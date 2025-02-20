@@ -27,35 +27,26 @@ export const ApplicationContextProvider = ({ children }) => {
   } = useDomainData();
 
 
-  const [FeeTokenAddress, setFeeTokenAddress] = useState(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
-  const [IDOFactoryAddress, setIDOFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
+  const [FeeTokenAddress, setFeeTokenAddress] = useState(domainSettings?.contracts?.[chainId]?.FeeTokenAddress || '');
+  const [IDOFactoryAddress, setIDOFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress || '');
   const [TokenLockerFactoryAddress, setTokenLockerFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
 
   const [isAppConfigured, setIsAppConfigured] = useState(Boolean(
     domainSettings?.contracts?.[chainId]?.FeeTokenAddress
     && domainSettings?.contracts?.[chainId]?.IDOFactoryAddress
     && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
-    && domainSettings?.networks?.[chainId]?.webSocketRPC
-    && domainSettings?.admin
-    && domainSettings?.ipfsInfuraDedicatedGateway
-    && domainSettings?.ipfsInfuraProjectId
-    && domainSettings?.ipfsInfuraProjectSecret
+
   ));
 
   useEffect(() => {
-    setFeeTokenAddress(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
-    setIDOFactoryAddress(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
+    setFeeTokenAddress(domainSettings?.contracts?.[chainId]?.FeeTokenAddress || '');
+    setIDOFactoryAddress(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress || '');
     setTokenLockerFactoryAddress(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
-
     setIsAppConfigured(Boolean(
       domainSettings?.contracts?.[chainId]?.FeeTokenAddress
       && domainSettings?.contracts?.[chainId]?.IDOFactoryAddress
       && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
-      && domainSettings?.networks?.[chainId]?.webSocketRPC
       && domainSettings?.admin
-      && domainSettings?.ipfsInfuraDedicatedGateway
-      && domainSettings?.ipfsInfuraProjectId
-      && domainSettings?.ipfsInfuraProjectSecret
     ))
   }, [domainSettings, chainId])
 
@@ -81,8 +72,8 @@ export const ApplicationContextProvider = ({ children }) => {
 
       setIsAvailableNetwork(
         Boolean(SUPPORTED_CHAIN_IDS.includes(Number(chainId))
-        // && networkIsFine
-      ))
+          // && networkIsFine
+        ))
     }
   }, [
     chainId,

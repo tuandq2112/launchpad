@@ -139,7 +139,6 @@ export default function Preview() {
       };
 
       const ipfsResonse = await pinJSONToIPFS(metadata);
-
       if (!ipfsResonse.success) {
         return {
           success: false,

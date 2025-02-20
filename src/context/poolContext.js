@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { networks } from "../constants/networksInfo";
 import { utils } from "../utils";
 import { useApplicationContext } from "./applicationContext";
+import { isEmpty } from "lodash";
 
 export const PoolContext = createContext({});
-
+const fromBlock = 48411597;
 export const PoolContextProvider = ({ children }) => {
   const [allPoolAddress, setAllPoolAddress] = useState([]);
   const [userPoolAddresses, setUserPoolAddresses] = useState([]);
@@ -27,9 +28,8 @@ export const PoolContextProvider = ({ children }) => {
       ipfsInfuraDedicatedGateway
     }
   } = useApplicationContext();
-
   useEffect(() => {
-    if (ipfsInfuraDedicatedGateway) {
+    if (!isEmpty(allPoolAddress)) {
       const delayDebounceFn = setTimeout(() => {
         allPoolAddress.map(async (address, index) => {
           await utils.loadPoolData(address, contract.web3, account, ipfsInfuraDedicatedGateway).then((IDOPoolData) => {
@@ -38,7 +38,7 @@ export const PoolContextProvider = ({ children }) => {
             if (
               owner?.toLowerCase() === account?.toLowerCase()
               || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-            ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+            ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
           });
         });
       }, 500);
@@ -59,7 +59,7 @@ export const PoolContextProvider = ({ children }) => {
           if (
             owner?.toLowerCase() === account?.toLowerCase()
             || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-          ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+          ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
 
         });
       });
@@ -90,13 +90,13 @@ export const PoolContextProvider = ({ children }) => {
       setAllPools([]);
       setUserPoolAddresses([]);
     }
-
     setIDOCreatedEvent(
       contract.IDOFactory.events.IDOCreated(
         {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
+          fromBlock: fromBlock,
         },
         function (error, event) {
+
           if (event) {
             setAllPoolAddress((p) => [...p, event.returnValues.idoPool]);
           }
@@ -119,7 +119,7 @@ export const PoolContextProvider = ({ children }) => {
     setLockerCreatedEvent(
       contract.TokenLockerFactory.events.LockerCreated(
         {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
+          fromBlock: fromBlock,
         },
         function (error, event) {
           if (event) {
@@ -138,7 +138,7 @@ export const PoolContextProvider = ({ children }) => {
         if (
           owner?.toLowerCase() === account?.toLowerCase()
           || withdrawer?.toLowerCase() === account?.toLowerCase()
-        ) setUserLockersAddresses((prevUserLockersAddresses) => [ ...prevUserLockersAddresses, lockerAddress ])
+        ) setUserLockersAddresses((prevUserLockersAddresses) => [...prevUserLockersAddresses, lockerAddress])
 
       });
     }, 500);

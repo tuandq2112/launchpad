@@ -12,22 +12,19 @@ export const useIPFS = () => {
     }
   } = useApplicationContext();
 
-  const projectId = ipfsInfuraProjectId || process.env.REACT_APP_INFURA_IPFS_KEY;
-  const projectSecret = ipfsInfuraProjectSecret || process.env.REACT_APP_INFURA_IPFS_SECRET;
+  const projectId = "3e31b3e72c8c4e798f5a2a61cf0ec50e"
+  const projectSecret = "cf8d05aac75b4427975f16928b23d8a7"
 
   return useMemo(() => {
     if (!projectId || !projectSecret) return null;
 
     try {
-      const auth = "Basic " + Buffer.from(projectId + ":" + projectSecret).toString('base64');
 
       return create({
-        host: "ipfs.infura.io",
+        host: "14.225.254.58:5001",
         port: 5001,
-        protocol: "https",
-        headers: {
-          authorization: auth,
-        },
+        protocol: "http",
+
       });
     } catch (error) {
       console.error('Failed to get IFPS', error)

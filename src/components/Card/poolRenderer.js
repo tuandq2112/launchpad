@@ -42,23 +42,17 @@ const PoolRenderer = (props) => {
   const hasEnded = parseInt(end) < (parseInt(Date.now() / 1000));
 
   useEffect(() => {
-    if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
-      setImage(getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
-    }
-  }, [idoInfo, idoInfo.metadata.image, idoInfo.metadata.imageHash, ipfsInfuraDedicatedGateway]);
+    fetchImage()
+  }, [idoInfo, idoInfo?.metadata?.image, idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway]);
 
-  // if (!utils.isValidPool(idoInfo) || !idoInfo) {
-  //   return (
-  //     <s.Card
-  //       ref={card}
-  //       ai="center"
-  //       style={{ maxWidth: 500, margin: 20, minWidth: 400 }}
-  //     >
-  //       Loading
-  //     </s.Card>
-  //   );
-  // }
+
   if (!idoAddress || !metadata || !tokenName || !tokenSymbol) return null;
+
+  const fetchImage = async () => {
+    if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
+      setImage(await getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
+    }
+  }
 
   return (
     <s.Card ref={card} style={{ maxWidth: 500, margin: 20, minWidth: 400 }}>

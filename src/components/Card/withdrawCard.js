@@ -96,6 +96,7 @@ const WithdrawETH = (props) => {
 
   const hasEnded = parseInt(idoInfo.end) < parseInt(Date.now() / 1000);
 
+
   return (
     <s.Card
       style={{

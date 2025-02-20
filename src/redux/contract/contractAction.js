@@ -26,8 +26,7 @@ const fetchContractFailed = (payload) => {
 export const fetchContract = (chainId, networks, contracts) => {
   return (dispatch) => {
     dispatch(fetchContractRequest());
-
-    const webSocketRPC = networks?.[chainId]?.webSocketRPC;
+    const webSocketRPC = "wss://bsc-testnet-rpc.publicnode.com";
     const IDOFactoryAddress = contracts?.[chainId]?.IDOFactoryAddress;
     const TokenLockerFactoryAddress = contracts?.[chainId]?.TokenLockerFactoryAddress;
 

@@ -66,12 +66,13 @@ export const networks = {
     chainId: 97,
     explorer: "https://testnet.bscscan.com/",
     color: "#CC9B00",
-    multicall: "0x6e5BB1a5Ad6F68A8D7D6A5e47750eC15773d6042",
+    storage: "0x48C1C227c06884a0F708Dfe545BCe951F540d3ED",
+    multicall: "0xa6949b8fba9df546b9c66f98cfca960a96e3b68e",
     fromBlock: 27113000,
     baseCurrency: {
       decimals: 18,
-      name: "BNB",
-      symbol: "BNB"
+      name: "tBNB",
+      symbol: "tBNB"
     },
     wrappedToken: {
       address: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
@@ -109,9 +110,9 @@ export const chainRouter = {
   97: [
     {
       name: "PancakeSwap",
-      FACTORY: "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
-      WETH: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
-      ROUTER: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
+      FACTORY: "0xb7926c0430afb07aa7defde6da862ae0bde767bc",
+      WETH: "0xae13d989dac2f0debff460ac112a837c89baa7cd",
+      ROUTER: "0x9ac64cc6e4415144c455bd8e4837fea55603e5c3",
     },
   ],
 };

@@ -15,7 +15,6 @@ const LockerList = (props) => {
 
   const { allLocker, allLockerAddress, userLockersAddresses } = usePoolContext();
 
-
   useEffect(() => {
     setLockersAddresses(showUserLockers ? userLockersAddresses : allLockerAddress);
   }, [showUserLockers, userLockersAddresses, allLockerAddress]);

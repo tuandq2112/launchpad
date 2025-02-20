@@ -19,7 +19,7 @@ const LongIdoList = () => {
   const loadmore = (amount) => {
     setLimit((p) => (p < userPoolAddresses.length ? p + amount : p));
   };
-
+  console.log(userPoolAddresses, allPools)
   return (
     <s.Container ai="center">
       <s.Container ai="center">

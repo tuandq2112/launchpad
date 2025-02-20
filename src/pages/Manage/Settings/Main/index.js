@@ -7,10 +7,10 @@ import Contracts from './Contracts';
 export default function Main() {
   return (
     <>
-      <IPFS />
+      {/* <IPFS />
       <s.SpacerSmall />
       <Networks />
-      <s.SpacerSmall />
+      <s.SpacerSmall /> */}
       <Contracts />
     </>
   )

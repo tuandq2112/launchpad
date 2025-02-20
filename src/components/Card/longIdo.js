@@ -21,11 +21,14 @@ const LongIdo = (props) => {
   const idoInfo = usePoolContext().allPools[idoAddress];
 
   useEffect(() => {
-    if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
-      setImage(getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
-    }
+    fetchImage()
   }, [idoInfo, idoInfo.metadata.image, idoInfo.metadata.imageHash, ipfsInfuraDedicatedGateway]);
 
+  async function fetchImage() {
+    if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
+      setImage(await getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
+    }
+  }
   if (!idoInfo) {
     return (
       <s.Card

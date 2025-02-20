@@ -10,7 +10,7 @@ const defaultSettings = () => ({
   contracts: {},
   networks: {},
 
-  ipfsInfuraDedicatedGateway: '',
+  ipfsInfuraDedicatedGateway: "http://14.225.254.58:5001",
   ipfsInfuraProjectId: '',
   ipfsInfuraProjectSecret: '',
 
@@ -103,7 +103,6 @@ export default function useDomainData() {
         const settings = parseSettings(info || '{}');
 
         const admin = owner === ZERO_ADDRESS ? '' : owner;
-
         setDomainSettings({ ...settings, admin });
 
         setIsDomainDataFetched(true);
