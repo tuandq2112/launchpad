@@ -41,10 +41,6 @@ const PoolRenderer = (props) => {
   const isStarted = parseInt(start) < (parseInt(Date.now() / 1000));
   const hasEnded = parseInt(end) < (parseInt(Date.now() / 1000));
 
-  useEffect(() => {
-    fetchImage()
-  }, [idoInfo, idoInfo?.metadata?.image, idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway]);
-
 
   if (!idoAddress || !metadata || !tokenName || !tokenSymbol) return null;
 
@@ -53,6 +49,11 @@ const PoolRenderer = (props) => {
       setImage(await getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
     }
   }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    fetchImage()
+  }, [idoInfo, idoInfo?.metadata?.image, idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway]);
 
   return (
     <s.Card ref={card} style={{ maxWidth: 500, margin: 20, minWidth: 400 }}>
