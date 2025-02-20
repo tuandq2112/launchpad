@@ -1,13 +1,12 @@
 import { useWeb3React } from "@web3-react/core";
+import { isEmpty } from "lodash";
 import React, { createContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { networks } from "../constants/networksInfo";
 import { utils } from "../utils";
 import { useApplicationContext } from "./applicationContext";
-import { isEmpty } from "lodash";
 
 export const PoolContext = createContext({});
-const fromBlock = 48411597;
+const fromBlock = 48434581;
 export const PoolContextProvider = ({ children }) => {
   const [allPoolAddress, setAllPoolAddress] = useState([]);
   const [userPoolAddresses, setUserPoolAddresses] = useState([]);

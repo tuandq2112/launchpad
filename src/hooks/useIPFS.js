@@ -16,15 +16,11 @@ export const useIPFS = () => {
   const projectSecret = "cf8d05aac75b4427975f16928b23d8a7"
 
   return useMemo(() => {
-    if (!projectId || !projectSecret) return null;
 
     try {
+      const client = create({ url: "https://ipfs.bonheo.store/api/v0" });
 
-      return create({
-        host: "ipfs.bonheo.store",
-        protocol: "https",
-
-      });
+      return client;
     } catch (error) {
       console.error('Failed to get IFPS', error)
       return null
